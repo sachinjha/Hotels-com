@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "title": "Acme Freight Delivery Pipeline Setup",
-  "description": "Deployment of the Acme Freight demo",
+  "title": "Hotels Micro Services Pipeline Setup",
+  "description": "Deployment of the Hotels Micro Services",
   "longDescription": "The Delivery Pipeline for DevOps Services allows you to automate your continuous deployment setup. To avoid conflicts, make sure to use unique application names. We recommend to use a common prefix like your name or initials.",
   "type": "object",
   "properties": {
@@ -33,7 +33,7 @@
       "type": "string"
     }
   },
-  "required": ["selected-region", "selected-organization", "selected-space", "erp-app-name", "controller-app-name", "webui-app-name"],
+  "required": ["selected-region", "selected-organization", "selected-space", "micro-ui-app-name", "micro-starrating-app-name", "micro-hotels-app-name","micro-location-app-name"],
   "form": [
    {
       "type": "validator",
@@ -42,26 +42,32 @@
    {
       "type": "text",
       "readonly": false,
-      "title": "ERP App Name",
-      "key": "erp-app-name"
+      "title": "Micro UI App Name",
+      "key": "micro-ui-name"
     },
     {
       "type": "text",
       "readonly": false,
-      "title": "Controller App Name",
-      "key": "controller-app-name"
+      "title": "Micro Starrating App Name",
+      "key": "micro-starrating-app-name"
     },
     {
       "type": "text",
       "readonly": false,
-      "title": "Webui App Name",
-      "key": "webui-app-name"
+      "title": "Micro Hotels App Name",
+      "key": "micro-hotels-app-name"
+    },
+    {
+      "type": "text",
+      "readonly": false,
+      "title": "Micro Location App Name",
+      "key": "micro-location-app-name"
     },
 
     {
       "type": "table",
-      "columnCount": 3,
-      "widths": ["33%", "33%", "33%"],
+      "columnCount": 4,
+      "widths": ["20%", "20%", "20%", "20%"],
       "items": [
         {
           "type": "label",
@@ -89,16 +95,6 @@
           "readonly": false
         }
       ]
-    },
-    {
-      "type": "label",
-      "title": "The recommendation service relies on OpenWhisk actions. To deploy these actions, the pipeline requires your OpenWhisk authorization key. Make sure to enter the authorization key associated with the space where the applications will be deployed."
-    },
-    {
-      "type": "text",
-      "readonly": false,
-      "title": "OpenWhisk Authorization Key",
-      "key": "openwhisk_auth"
     }
   ]
 }
