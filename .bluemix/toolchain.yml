@@ -75,7 +75,7 @@ webui-build:
   parameters:
     name: "micro-location"
     configuration:
-      content: $file(micro-location.yml)
+      content: $file(micro-location.pipeline.yml)
       env:
         REPO: "micro-location-repo"
         REPO_BRANCH: "master"
@@ -94,7 +94,6 @@ micro-hotels-build:
     configuration:
       content: $file(micro-hotels.pipeline.yml)
       env:
-        CONTROLLER_SERVICE_APP_NAME: "{{deploy.parameters.controller-app-name}}"
         REPO: "micro-hotels-repo"
         REPO_BRANCH: "master"        
         SPACE_NAME: "{{deploy.parameters.selected-space}}"
