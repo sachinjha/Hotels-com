@@ -1,115 +1,107 @@
 ---
-name: "Cloud-native Toolchain for the Acme Freight sample"
-description: "With this cloud-native toolchain, you use the acme freight template to create a supply chain management web app and back end that consists of multiple microservices: a Controller API, an ERP API, and a WEB-UI. The toolchain is preconfigured for continuous delivery, source control, blue-green deployment, unit testing, and issue tracking.\n\nTo get started, click **Create**."
+name: "Cloud-native Toolchain for the Hotels Microservices sample"
+description: "Hotels Microservices Example"
 required:
  - deploy
 
 # Github repos
-erp-api-repo:
+micro-ui-repo:
   service_id: githubpublic
   parameters:
-    repo_name: "acme-freight-erp"
-    repo_url: "https://github.com/IBM/acme-freight-erp"
+    repo_name: "micro-ui"
+    repo_url: "https://github.com/kalyani75/micro-ui"
     type: clone
     has_issues: true
 
-controller-repo:
+micro-starrating-repo:
   service_id: githubpublic
   parameters:
-    repo_name: "acme-freight-controller"
-    repo_url: "https://github.com/IBM/acme-freight-controller"
+    repo_name: "micro-starrating"
+    repo_url: "https://github.com/kalyani75/micro-starrating"
     type: clone
     has_issues: true
 
-webui-repo:
+micro-location-repo:
   service_id: githubpublic
   parameters:
-    repo_name: "acme-freight-webui"
-    repo_url: "https://github.com/IBM/acme-freight-webui"
+    repo_name: "micro-location"
+    repo_url: "https://github.com/kalyani75/micro-location"
     type: clone
     has_issues: true
 
-recommendation-repo:
+micro-hotels-repo:
   service_id: githubpublic
   parameters:
-    repo_name: "acme-freight-recommendation"
-    repo_url: "https://github.com/IBM/acme-freight-recommendation"
+    repo_name: "micro-hotels"
+    repo_url: "https://github.com/kalyani75/micro-hotels"
     type: clone
     has_issues: true
 
-erp-api-build:
+micro-ui-build:
   service_id: pipeline
   parameters:
-    name: "erp"
+    name: "micro-ui"
     configuration:
-      content: $file(erp-api.pipeline.yml)
+      content: $file(micro-ui.pipeline.yml)
       env:
-        REPO: "erp-api-repo"
+        REPO: "micro-ui-repo"
         REPO_BRANCH: "master"
-        CF_APP_NAME: "{{deploy.parameters.erp-app-name}}"
+        CF_APP_NAME: "{{deploy.parameters.micro-ui-name}}"
         SPACE_NAME: "{{deploy.parameters.selected-space}}"
         ORG_NAME: "{{deploy.parameters.selected-organization}}"
         REGION_ID: "{{deploy.parameters.selected-region}}"
       execute: true
-    services: ["erp-api-repo"]
+    services: ["micro-ui-repo"]
   hidden: [form, description]
 
-controller-build:
+micro-starrating-build:
   service_id: pipeline
   parameters:
-    name: "controller"
+    name: "micro-starrating"
     configuration:
-      content: $file(controller.pipeline.yml)
+      content: $file(micro-starrating.pipeline.yml)
       env:
-        REPO: "controller-repo"
+        REPO: "micro-starrating-repo"
         REPO_BRANCH: "master"
-        ERP_SERVICE_APP_NAME: "{{deploy.parameters.erp-app-name}}"
-        CF_APP_NAME: "{{deploy.parameters.controller-app-name}}"
         SPACE_NAME: "{{deploy.parameters.selected-space}}"
         ORG_NAME: "{{deploy.parameters.selected-organization}}"
         REGION_ID: "{{deploy.parameters.selected-region}}"
-        OPENWHISK_AUTH: "{{deploy.parameters.openwhisk_auth}}"
-        RECOMMENDATION_PACKAGE_NAME: "lwr"
       execute: true
-    services: ["controller-repo"]
+    services: ["micro-starrating-repo"]
   hidden: [form, description]
 
 webui-build:
   service_id: pipeline
   parameters:
-    name: "webui"
+    name: "micro-location"
     configuration:
-      content: $file(webui.pipeline.yml)
+      content: $file(micro-location.yml)
       env:
-        REPO: "webui-repo"
+        REPO: "micro-location-repo"
         REPO_BRANCH: "master"
-        CONTROLLER_SERVICE_APP_NAME: "{{deploy.parameters.controller-app-name}}"
         CF_APP_NAME: "{{deploy.parameters.webui-app-name}}"
         SPACE_NAME: "{{deploy.parameters.selected-space}}"
         ORG_NAME: "{{deploy.parameters.selected-organization}}"
         REGION_ID: "{{deploy.parameters.selected-region}}"
       execute: true
-    services: ["webui-repo"]
+    services: ["micro-location-repo"]
   hidden: [form, description]
 
-recommendation-build:
+micro-hotels-build:
   service_id: pipeline
   parameters:
-    name: "recommendation"
+    name: "micro-hotels"
     configuration:
-      content: $file(recommendation.pipeline.yml)
+      content: $file(micro-hotels.pipeline.yml)
       env:
         CONTROLLER_SERVICE_APP_NAME: "{{deploy.parameters.controller-app-name}}"
-        REPO: "recommendation-repo"
-        REPO_BRANCH: "master"
-        OPENWHISK_AUTH: "{{deploy.parameters.openwhisk_auth}}"
-        PACKAGE_NAME: "lwr"
-        CLOUDANT_DATABASE: "recommendations"
+        REPO: "micro-hotels-repo"
+        REPO_BRANCH: "master"        
         SPACE_NAME: "{{deploy.parameters.selected-space}}"
         ORG_NAME: "{{deploy.parameters.selected-organization}}"
         REGION_ID: "{{deploy.parameters.selected-region}}"
       execute: true
-    services: ["recommendation-repo"]
+    services: ["micro-hotels-repo"]
   hidden: [form, description]
 
 #Web IDE
@@ -125,7 +117,7 @@ deploy:
     selected-region: "{{region}}"
     selected-organization: "{{organization}}"
     selected-space: "{{space}}"
-    erp-app-name: "{{name}}-erp"
-    controller-app-name: "{{name}}-controller"
-    webui-app-name: "{{name}}-webui"
-    openwhisk_auth:
+    micro-ui-app-name: "{{name}}-ui"
+    micro-starrating-app-name: "{{name}}-starrating"
+    micro-hotels-app-name: "{{name}}-hotels"
+    micro-location-app-name: "{{name}}-location"
