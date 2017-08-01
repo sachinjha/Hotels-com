@@ -10,9 +10,6 @@ stages:
   properties:
   - name: REPO_BRANCH
     value: ${REPO_BRANCH}
-  - name: HOTELS_APP_NAME
-    value: ${CONTROLLER_SERVICE_APP_NAME}
-    type: text
   - name: REGION_ID
     value: ${REGION_ID}
   jobs:
