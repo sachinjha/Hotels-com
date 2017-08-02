@@ -17,23 +17,31 @@
       "description": "The Bluemix space",
       "type": "string"
     },
-    "erp-app-name": {
-      "description": "Name of the ERP API",
+    "hotels-ui-app-name": {
+      "description": "Name of the UI",
       "type": "string"
     },
-   "controller-app-name": {
-      "description": "Name of the controller app",
+   "hotels-dealsQ-app-name": {
+      "description": "Name of the deals Query app",
       "type": "string"
     },
-    "webui-app-name": {
-      "description": "Name of the WEBUI App",
+    "hotels-hotelQ-app-name": {
+      "description": "Name of the hotels Query App",
+      "type": "string"
+    },
+    "hotels-locationQ-app-name": {
+      "description": "Name of the hotels Query App",
+      "type": "string"
+    },
+    "hotels-controller-app-name": {
+      "description": "Name of the hotels Query App",
       "type": "string"
     },
     "openwhisk_auth": {
       "type": "string"
     }
   },
-  "required": ["selected-region", "selected-organization", "selected-space", "micro-ui-app-name", "micro-starrating-app-name", "micro-hotels-app-name","micro-location-app-name"],
+  "required": ["selected-region", "selected-organization", "selected-space", "hotels-ui-app-name", "hotels-dealsQ-app-name", "hotels-hotelQ-app-name","hotels-locationQ-app-name","hotels-controller-app-name"],
   "form": [
    {
       "type": "validator",
@@ -42,32 +50,37 @@
    {
       "type": "text",
       "readonly": false,
-      "title": "Micro UI App Name",
-      "key": "micro-ui-name"
+      "title": "Hotels UI App Name",
+      "key": "hotels-ui-app-name"
     },
     {
       "type": "text",
       "readonly": false,
-      "title": "Micro Starrating App Name",
-      "key": "micro-starrating-app-name"
+      "title": "Hotels Query App Name",
+      "key": "hotels-hotelQ-app-name"
     },
     {
       "type": "text",
       "readonly": false,
-      "title": "Micro Hotels App Name",
-      "key": "micro-hotels-app-name"
+      "title": " Deals Query App Name",
+      "key": "hotels-dealsQ-app-name"
     },
     {
       "type": "text",
       "readonly": false,
-      "title": "Micro Location App Name",
-      "key": "micro-location-app-name"
+      "title": "Hotels Location App Name",
+      "key": "hotels-locationQ-app-name"
     },
-
+  {
+      "type": "text",
+      "readonly": false,
+      "title": "Hotels Controller App Name",
+      "key": "hotels-controller-app-name"
+    },
     {
       "type": "table",
-      "columnCount": 4,
-      "widths": ["20%", "20%", "20%", "20%"],
+      "columnCount": 3,
+      "widths": ["20%", "20%", "20%"],
       "items": [
         {
           "type": "label",
