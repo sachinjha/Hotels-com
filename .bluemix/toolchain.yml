@@ -5,102 +5,111 @@ required:
  - deploy
 
 # Github repos
-micro-ui-repo:
+hotels-ui-repo:
   service_id: githubpublic
   parameters:
-    repo_name: "micro-ui"
-    repo_url: "https://github.com/kalyani75/micro-ui"
+    repo_name: "hotels-ui"
+    repo_url: "https://github.com/kalyani75/hotels-ui"
     type: clone
     has_issues: true
 
-micro-starrating-repo:
+hotels-controller-repo:
   service_id: githubpublic
   parameters:
-    repo_name: "micro-starrating"
-    repo_url: "https://github.com/kalyani75/micro-starrating"
+    repo_name: "hotels-controller"
+    repo_url: "https://github.com/kalyani75/hotels-controller"
     type: clone
     has_issues: true
 
-micro-location-repo:
+hotels-locationQ-repo:
   service_id: githubpublic
   parameters:
-    repo_name: "micro-location"
-    repo_url: "https://github.com/kalyani75/micro-location"
+    repo_name: "hotels-locationQ"
+    repo_url: "https://github.com/kalyani75/hotels-locationQ"
     type: clone
     has_issues: true
 
-micro-hotels-repo:
+hotels-hotelQ-repo:
   service_id: githubpublic
   parameters:
-    repo_name: "micro-hotels"
-    repo_url: "https://github.com/kalyani75/micro-hotels"
+    repo_name: "hotels-hotelQ"
+    repo_url: "https://github.com/kalyani75/hotels-hotelQ"
     type: clone
     has_issues: true
 
-micro-ui-build:
+hotels-dealsQ-repo:
+  service_id: githubpublic
+  parameters:
+    repo_name: "hotels-dealsQ"
+    repo_url: "https://github.com/kalyani75/hotels-dealsQ"
+    type: clone
+    has_issues: true
+    
+    
+hotels-ui-build:
   service_id: pipeline
   parameters:
-    name: "micro-ui"
+    name: "hotels-ui"
     configuration:
-      content: $file(micro-ui.pipeline.yml)
+      content: $file(hotels-ui.pipeline.yml)
       env:
-        REPO: "micro-ui-repo"
+        REPO: "hotels-ui-repo"
         REPO_BRANCH: "master"
-        CF_APP_NAME: "{{deploy.parameters.micro-ui-name}}"
+        CF_APP_NAME: "{{deploy.parameters.hotels-ui-name}}"
         SPACE_NAME: "{{deploy.parameters.selected-space}}"
         ORG_NAME: "{{deploy.parameters.selected-organization}}"
         REGION_ID: "{{deploy.parameters.selected-region}}"
       execute: true
-    services: ["micro-ui-repo"]
+    services: ["hotels-ui-repo"]
   hidden: [form, description]
 
-micro-starrating-build:
+hotels-hotelQ-build:
   service_id: pipeline
   parameters:
-    name: "micro-starrating"
+    name: "hotels-hotelQ"
     configuration:
-      content: $file(micro-starrating.pipeline.yml)
+      content: $file(hotels-hotelQ.pipeline.yml)
       env:
-        REPO: "micro-starrating-repo"
+        REPO: "hotels-hotelQ-repo"
         REPO_BRANCH: "master"
         SPACE_NAME: "{{deploy.parameters.selected-space}}"
         ORG_NAME: "{{deploy.parameters.selected-organization}}"
         REGION_ID: "{{deploy.parameters.selected-region}}"
       execute: true
-    services: ["micro-starrating-repo"]
+    services: ["hotels-hotelQ-repo"]
   hidden: [form, description]
 
-webui-build:
+hotels-locationQ-build:
   service_id: pipeline
   parameters:
-    name: "micro-location"
+    name: "hotels-locationQ"
     configuration:
-      content: $file(micro-location.pipeline.yml)
+      content: $file(hotels-locationQ.pipeline.yml)
       env:
-        REPO: "micro-location-repo"
+        REPO: "hotels-locationQ-repo"
         REPO_BRANCH: "master"
         CF_APP_NAME: "{{deploy.parameters.webui-app-name}}"
         SPACE_NAME: "{{deploy.parameters.selected-space}}"
         ORG_NAME: "{{deploy.parameters.selected-organization}}"
         REGION_ID: "{{deploy.parameters.selected-region}}"
       execute: true
-    services: ["micro-location-repo"]
+    services: ["hotels-locationQ-repo"]
   hidden: [form, description]
 
-micro-hotels-build:
+hotels-dealsQ-build:
   service_id: pipeline
   parameters:
-    name: "micro-hotels"
+    name: "hotels-dealsQ"
     configuration:
-      content: $file(micro-hotels.pipeline.yml)
+      content: $file(hotels-dealsQ.pipeline.yml)
       env:
-        REPO: "micro-hotels-repo"
+        REPO: "hotels-dealsQ-repo"
         REPO_BRANCH: "master"        
         SPACE_NAME: "{{deploy.parameters.selected-space}}"
         ORG_NAME: "{{deploy.parameters.selected-organization}}"
         REGION_ID: "{{deploy.parameters.selected-region}}"
       execute: true
-    services: ["micro-hotels-repo"]
+    services: ["hotels-dealsQ-repo"]
   hidden: [form, description]
 
 #Web IDE
