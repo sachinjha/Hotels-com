@@ -55,7 +55,7 @@ hotels-ui-build:
       env:
         REPO: "hotels-ui-repo"
         REPO_BRANCH: "master"
-        
+        CF_APP_NAME: "{{deploy.parameters.hotels-ui-app-name}}"
         SPACE_NAME: "{{deploy.parameters.selected-space}}"
         ORG_NAME: "{{deploy.parameters.selected-organization}}"
         REGION_ID: "{{deploy.parameters.selected-region}}"
