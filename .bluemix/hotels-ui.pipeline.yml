@@ -29,8 +29,8 @@ stages:
       space: ${SPACE_NAME}
       application: ${CF_APP_NAME}
     script: |-     
-      #!/bin/bash
-      cf push "${CF_APP}"
+#!/bin/bash
 
-      # View logs
-      # cf logs "${CF_APP}" --recent
+cf push "${CF_APP}" --hostname ${CF_APP_NAME}
+# View logs
+# cf logs "${CF_APP}" --recent
