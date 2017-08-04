@@ -20,8 +20,10 @@ stages:
   properties:
   - name: REPO_BRANCH
     value: ${REPO_BRANCH}
+  - name: CF_APP_NAME
+    value: ${CF_APP_NAME} 
   jobs:
-  - name: UI Deploy
+  - name: UI_Deploy
     type: deployer
     target:
       region_id: ${REGION_ID}
