@@ -139,7 +139,7 @@ hotels-event-create-build:
   parameters:
     name: "hotels-event-create"
     configuration:
-      content: $file(hotels-event-create.pipeline.yml)
+      content: $file(hotels-event.pipeline.yml)
       env:
         REPO: "hotels-event-create-repo"
         REPO_BRANCH: "master"
