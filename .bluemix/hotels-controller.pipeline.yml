@@ -20,8 +20,6 @@ stages:
   properties:
   - name: REPO_BRANCH
     value: ${REPO_BRANCH}
-  - name: CF_APP_NAME
-    value: ${CF_APP_NAME} 
   jobs:
   - name: UI_Deploy
     type: deployer
@@ -31,8 +29,8 @@ stages:
       space: ${SPACE_NAME}
       application: ${CF_APP_NAME}
     script: |-     
-#!/bin/bash
+    #!/bin/bash
 
-cf push "${CF_APP}" --hostname ${CF_APP_NAME}
-# View logs
-# cf logs "${CF_APP}" --recent
+    cf push "${CF_APP}" --hostname ${CF_APP_NAME}
+    # View logs
+    # cf logs "${CF_APP}" --recent
