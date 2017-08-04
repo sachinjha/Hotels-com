@@ -108,6 +108,16 @@
           "readonly": false
         }
       ]
+    },
+    {
+      "type": "label",
+      "title": "The recommendation service relies on OpenWhisk actions. To deploy these actions, the pipeline requires your OpenWhisk authorization key. Make sure to enter the authorization key associated with the space where the applications will be deployed."
+    },
+    {
+      "type": "text",
+      "readonly": false,
+      "title": "OpenWhisk Authorization Key",
+      "key": "openwhisk_auth"
     }
   ]
 }

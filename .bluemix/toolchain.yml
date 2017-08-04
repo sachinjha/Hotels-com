@@ -171,3 +171,4 @@ deploy:
     hotels-hotelQ-app-name: "{{name}}-hotelsQ"
     hotels-locationQ-app-name: "{{name}}-locationQ"
     hotels-controller-app-name: "{{name}}-controller"
+    openwhisk_auth:
