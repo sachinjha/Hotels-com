@@ -9,7 +9,7 @@ hotels-ui-repo:
   service_id: githubpublic
   parameters:
     repo_name: "hotels-ui"
-    repo_url: "https://github.com/kalyani75/hotels-ui"
+    repo_url: "https://github.com/sachinjha/hotels-ui"
     type: Existing
     has_issues: true
 
@@ -17,7 +17,7 @@ hotels-controller-repo:
   service_id: githubpublic
   parameters:
     repo_name: "hotels-controller"
-    repo_url: "https://github.com/kalyani75/hotels-controller"
+    repo_url: "https://github.com/sachinjha/hotels-controller"
     type: Existing
     has_issues: true
 
@@ -25,7 +25,7 @@ hotels-locationQ-repo:
   service_id: githubpublic
   parameters:
     repo_name: "hotels-locationQ"
-    repo_url: "https://github.com/kalyani75/hotels-locationQ"
+    repo_url: "https://github.com/sachinjha/hotels-locationQ"
     type: Existing
     has_issues: true
 
@@ -33,7 +33,7 @@ hotels-hotelQ-repo:
   service_id: githubpublic
   parameters:
     repo_name: "hotels-hotelQ"
-    repo_url: "https://github.com/kalyani75/hotels-hotelQ"
+    repo_url: "https://github.com/sachinjha/hotels-hotelQ"
     type: Existing
     has_issues: true
 
@@ -41,7 +41,15 @@ hotels-dealsQ-repo:
   service_id: githubpublic
   parameters:
     repo_name: "hotels-dealsQ"
-    repo_url: "https://github.com/kalyani75/hotels-dealsQ"
+    repo_url: "https://github.com/sachinjha/hotels-dealsQ"
+    type: Existing
+    has_issues: true
+
+hotels-event-create-repo:
+  service_id: githubpublic
+  parameters:
+    repo_name: "hotels-event-create"
+    repo_url: "https://github.com/sachinjha/hotels-event-create"
     type: Existing
     has_issues: true
     
@@ -125,6 +133,25 @@ hotels-controller-build:
       execute: true
     services: ["hotels-controller-repo"]
 hidden: [form, description]
+
+hotels-event-create-build:
+  service_id: pipeline
+  parameters:
+    name: "hotels-event-create"
+    configuration:
+      content: $file(hotels-event-create.pipeline.yml)
+      env:
+        REPO: "hotels-event-create-repo"
+        REPO_BRANCH: "master"
+        OPENWHISK_AUTH: "{{deploy.parameters.openwhisk_auth}}"
+        PACKAGE_NAME: "hotels-event"
+        CLOUDANT_DATABASE: "eventsdb"
+        SPACE_NAME: "{{deploy.parameters.selected-space}}"
+        ORG_NAME: "{{deploy.parameters.selected-organization}}"
+        REGION_ID: "{{deploy.parameters.selected-region}}"
+      execute: true
+    services: ["hotels-event-create-repo"]
+  hidden: [form, description]
 
 #Web IDE
 webide:
