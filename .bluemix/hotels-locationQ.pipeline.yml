@@ -29,8 +29,8 @@ stages:
       space: ${SPACE_NAME}
       application: ${CF_APP_NAME}
     script: |-     
-#!/bin/bash
-cf create-service compose-for-redis Standard redis
-cf push "${CF_APP}" --hostname ${CF_APP_NAME}
-# View logs
-# cf logs "${CF_APP}" --recent
+  #!/bin/bash
+  cf create-service compose-for-redis Standard redis
+  cf push "${CF_APP}" --hostname "${CF_APP_NAME}"
+  # View logs
+  # cf logs "${CF_APP}" --recent
