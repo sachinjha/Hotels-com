@@ -1,6 +1,6 @@
 ---
 stages:
-- name: BUILD-EVENT
+- name: BUILD
   inputs:
   - type: git
     branch: ${REPO_BRANCH}
@@ -17,7 +17,7 @@ stages:
     script: |-
       #!/bin/bash
       ./.bluemix/pipeline-BUILD.sh
-- name: DEPLOY-EVENT
+- name: DEPLOY
   inputs:
   - type: job
     stage: BUILD
