@@ -37,6 +37,7 @@ stages:
     script: |-
     #!/bin/bash
     cf create-service compose-for-redis Standard redis
-    cf push "${CF_APP}" --hostname "${CF_APP_NAME}"
+    cf push "${CF_APP}" 
+    #--hostname "${CF_APP_NAME}"
     # View logs
     # cf logs "${CF_APP}" --recent
