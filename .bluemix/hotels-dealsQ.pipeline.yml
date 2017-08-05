@@ -7,15 +7,9 @@ stages:
     service: ${REPO}
   triggers:
   - type: commit
-  properties:
-  - name: REPO_BRANCH
-    value: ${REPO_BRANCH}
-  - name: REGION_ID
-    value: ${REGION_ID}
   jobs:
   - name: Build
     type: builder
-    
 - name: DEPLOY
   inputs:
   - type: job
@@ -27,16 +21,16 @@ stages:
   - name: REPO_BRANCH
     value: ${REPO_BRANCH}
   jobs:
-  - name: Hotel Deploy
+  - name: UI_Deploy
     type: deployer
     target:
       region_id: ${REGION_ID}
       organization: ${ORG_NAME}
       space: ${SPACE_NAME}
       application: ${CF_APP_NAME}
-    script: |-
-      #!/bin/bash
-      cf push "${CF_APP}"
-
+    script: |-     
+#!/bin/bash
+cf create-service compose-for-redis Standard redis
+cf push "${CF_APP}" --hostname "${CF_APP_NAME}"
 # View logs
 # cf logs "${CF_APP}" --recent
