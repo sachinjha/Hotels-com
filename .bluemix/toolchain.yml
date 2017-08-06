@@ -12,7 +12,7 @@ hotels-dealsQ-repo:
     repo_name: "hotels-dealsQ"
     repo_url: "https://github.com/kalyani75/hotels-dealsQ"
     type: clone
-has_issues: true
+    has_issues: true
 
 hotels-ui-repo:
   service_id: githubpublic
@@ -20,7 +20,7 @@ hotels-ui-repo:
     repo_name: "hotels-ui"
     repo_url: "https://github.com/kalyani75/hotels-ui"
     type: clone
-has_issues: true
+    has_issues: true
 
 hotels-dealsQ-build:
   service_id: pipeline
