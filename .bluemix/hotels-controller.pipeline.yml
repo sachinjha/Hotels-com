@@ -32,5 +32,4 @@ stages:
       application: ${CF_APP_NAME}
     script: |-
       #!/bin/bash
-      cf create-service compose-for-redis Standard redis
       cf push "${CF_APP}" --hostname ${CF_APP_NAME}
