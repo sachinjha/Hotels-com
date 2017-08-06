@@ -12,6 +12,31 @@ erp-api-repo:
     repo_url: "https://github.com/IBM/acme-freight-erp"
     type: clone
     has_issues: true
+    
+hotels-ui-repo:
+  service_id: githubpublic
+  parameters:
+    repo_name: "hotels-ui"
+    repo_url: "https://github.com/kalyani75/hotels-ui"
+    type: clone
+has_issues: true
+
+hotels-ui-build:
+  service_id: pipeline
+  parameters:
+    name: "hotels-ui"
+    configuration:
+      content: $file(hotels-ui.pipeline.yml)
+      env:
+        REPO: "hotels-ui-repo"
+        REPO_BRANCH: "master"
+        CF_APP_NAME: "{{deploy.parameters.hotels-ui-app-name}}"
+        SPACE_NAME: "{{deploy.parameters.selected-space}}"
+        ORG_NAME: "{{deploy.parameters.selected-organization}}"
+        REGION_ID: "{{deploy.parameters.selected-region}}"
+      execute: true
+    services: ["hotels-ui-repo"]
+hidden: [form, description]
 
 erp-api-build:
   service_id: pipeline
@@ -44,6 +69,7 @@ deploy:
     selected-organization: "{{organization}}"
     selected-space: "{{space}}"
     erp-app-name: "{{name}}-erp"
+    hotels-ui-app-name: "{{name}}-ui"
     controller-app-name: "{{name}}-controller"
     webui-app-name: "{{name}}-webui"
 openwhisk_auth:
