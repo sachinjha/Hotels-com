@@ -6,6 +6,14 @@ required:
 
 # Github repos
 
+hotels-dealsQ-repo:
+  service_id: githubpublic
+  parameters:
+    repo_name: "hotels-dealsQ"
+    repo_url: "https://github.com/kalyani75/hotels-dealsQ"
+    type: clone
+has_issues: true
+
 hotels-ui-repo:
   service_id: githubpublic
   parameters:
@@ -14,13 +22,6 @@ hotels-ui-repo:
     type: clone
 has_issues: true
 
-hotels-dealsQ-repo:
-  service_id: githubpublic
-  parameters:
-    repo_name: "hotels-dealsQ"
-    repo_url: "https://github.com/kalyani75/hotels-dealsQ"
-    type: clone
-has_issues: true
 hotels-dealsQ-build:
   service_id: pipeline
   parameters:
