@@ -16,11 +16,35 @@ erp-api-repo:
 hotels-ui-repo:
   service_id: githubpublic
   parameters:
-    repo_name: "hotels-ui5"
+    repo_name: "hotels-ui"
     repo_url: "https://github.com/kalyani75/hotels-ui"
     type: clone
 has_issues: true
 
+hotels-dealsQ-repo:
+  service_id: githubpublic
+  parameters:
+    repo_name: "hotels-dealsQ"
+    repo_url: "https://github.com/kalyani75/hotels-dealsQ"
+    type: clone
+has_issues: true
+
+hotels-dealsQ-build:
+  service_id: pipeline
+  parameters:
+    name: "hotels-dealsQ"
+    configuration:
+      content: $file(hotels-dealsQ.pipeline.yml)
+      env:
+        REPO: "hotels-dealsQ-repo"
+        REPO_BRANCH: "master"   
+        CF_APP_NAME: "{{deploy.parameters.dealsQ-app-name}}"
+        SPACE_NAME: "{{deploy.parameters.selected-space}}"
+        ORG_NAME: "{{deploy.parameters.selected-organization}}"
+        REGION_ID: "{{deploy.parameters.selected-region}}"
+      execute: true
+    services: ["hotels-dealsQ-repo"]
+hidden: [form, description]
 hotels-ui-build:
   service_id: pipeline
   parameters:
@@ -70,5 +94,6 @@ deploy:
     selected-space: "{{space}}"
     erp-app-name: "{{name}}-erp"
     ui-app-name: "{{name}}-ui"
+    dealsQ-app-name: "{{name}}-dealsQ"
     controller-app-name: "{{name}}-controller"
     webui-app-name: "{{name}}-webui"
