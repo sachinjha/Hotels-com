@@ -21,12 +21,13 @@ stages:
   - name: REPO_BRANCH
     value: ${REPO_BRANCH}
   jobs:
-  - name: UI_Deploy
+  - name: Blue/Green Deploy
     type: deployer
     target:
       region_id: ${REGION_ID}
       organization: ${ORG_NAME}
       space: ${SPACE_NAME}
       application: ${CF_APP_NAME}
-    script: |-     
-    #!/bin/bash
+    script: |-
+      #!/bin/bash
+      cf push "${CF_APP}"
