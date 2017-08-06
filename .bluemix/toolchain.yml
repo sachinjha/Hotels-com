@@ -21,6 +21,22 @@ hotels-ui-repo:
     repo_url: "https://github.com/kalyani75/hotels-ui"
     type: clone
     has_issues: true
+    
+hotels-locationQ-repo:
+  service_id: githubpublic
+  parameters:
+    repo_name: "hotels-locationQ"
+    repo_url: "https://github.com/kalyani75/hotels-locationQ"
+    type: clone
+    has_issues: true
+
+hotels-hotelQ-repo:
+  service_id: githubpublic
+  parameters:
+    repo_name: "hotels-hotelQ"
+    repo_url: "https://github.com/kalyani75/hotels-hotelQ"
+    type: clone
+has_issues: true
 
 hotels-dealsQ-build:
   service_id: pipeline
@@ -56,6 +72,40 @@ hotels-ui-build:
     services: ["hotels-ui-repo"]
   hidden: [form, description]
 
+hotels-hotelQ-build:
+  service_id: pipeline
+  parameters:
+    name: "hotels-hotelQ"
+    configuration:
+      content: $file(hotels-hotelQ.pipeline.yml)
+      env:
+        REPO: "hotels-hotelQ-repo"
+        REPO_BRANCH: "master"
+        CF_APP_NAME: "{{deploy.parameters.hotelQ-app-name}}"
+        SPACE_NAME: "{{deploy.parameters.selected-space}}"
+        ORG_NAME: "{{deploy.parameters.selected-organization}}"
+        REGION_ID: "{{deploy.parameters.selected-region}}"
+      execute: true
+    services: ["hotels-hotelQ-repo"]
+  hidden: [form, description]
+
+hotels-locationQ-build:
+  service_id: pipeline
+  parameters:
+    name: "hotels-locationQ"
+    configuration:
+      content: $file(hotels-locationQ.pipeline.yml)
+      env:
+        REPO: "hotels-locationQ-repo"
+        REPO_BRANCH: "master"
+        CF_APP_NAME: "{{deploy.parameters.locationQ-app-name}}"
+        SPACE_NAME: "{{deploy.parameters.selected-space}}"
+        ORG_NAME: "{{deploy.parameters.selected-organization}}"
+        REGION_ID: "{{deploy.parameters.selected-region}}"
+      execute: true
+    services: ["hotels-locationQ-repo"]
+hidden: [form, description]
+
 #Web IDE
 webide:
   service_id: orion
@@ -72,5 +122,7 @@ deploy:
     erp-app-name: "{{name}}-erp"
     ui-app-name: "{{name}}-ui"
     dealsQ-app-name: "{{name}}-dealsQ"
+    locationQ-app-name: "{{name}}-locationQ"
+    hotelQ-app-name: "{{name}}-hotelQ"
     controller-app-name: "{{name}}-controller"
     webui-app-name: "{{name}}-webui"
