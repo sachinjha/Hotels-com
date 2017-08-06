@@ -21,19 +21,16 @@ stages:
   - name: REPO_BRANCH
     value: ${REPO_BRANCH}
   - name: CF_APP_NAME
-value: ${CF_APP_NAME}
+    value: ${CF_APP_NAME}
   jobs:
-  - name: LocationDeploy
+  - name: Blue/Green Deploy
     type: deployer
     target:
       region_id: ${REGION_ID}
       organization: ${ORG_NAME}
       space: ${SPACE_NAME}
       application: ${CF_APP_NAME}
-    script: |-     
-  #!/bin/bash
-  cf create-service compose-for-redis Standard redis
-  cf push "${CF_APP}" 
-  #--hostname "${CF_APP_NAME}"
-  # View logs
-  # cf logs "${CF_APP}" --recent
+    script: |-
+      #!/bin/bash
+      cf create-service compose-for-redis Standard redis
+      cf push "${CF_APP}" --hostname ${CF_APP_NAME}
