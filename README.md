@@ -1,6 +1,6 @@
 # The Hotels Microservices journey
 
-This a micro services example the team is developing
+This a micro services example the team is developing.
 
 
 ### Deploy Hotels Microservices
