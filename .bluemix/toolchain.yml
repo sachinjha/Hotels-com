@@ -37,7 +37,7 @@ hotels-dealsQ-build:
         REGION_ID: "{{deploy.parameters.selected-region}}"
       execute: true
     services: ["hotels-dealsQ-repo"]
- hidden: [form, description]
+  hidden: [form, description]
 
 hotels-ui-build:
   service_id: pipeline
@@ -54,7 +54,7 @@ hotels-ui-build:
         REGION_ID: "{{deploy.parameters.selected-region}}"
       execute: true
     services: ["hotels-ui-repo"]
- hidden: [form, description]
+  hidden: [form, description]
 
 #Web IDE
 webide:
