@@ -21,7 +21,6 @@ hotels-dealsQ-repo:
     repo_url: "https://github.com/kalyani75/hotels-dealsQ"
     type: clone
 has_issues: true
-
 hotels-dealsQ-build:
   service_id: pipeline
   parameters:
