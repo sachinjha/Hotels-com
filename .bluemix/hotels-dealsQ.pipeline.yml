@@ -21,7 +21,7 @@ stages:
   - name: REPO_BRANCH
     value: ${REPO_BRANCH}
   jobs:
-  - name: UI_Deploy
+  - name: DealsDeploy
     type: deployer
     target:
       region_id: ${REGION_ID}
