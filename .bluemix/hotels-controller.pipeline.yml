@@ -31,6 +31,7 @@ stages:
     script: |-     
     #!/bin/bash
 
-    cf push "${CF_APP}" --hostname "${CF_APP_NAME}"
+    cf push "${CF_APP}" 
+    #--hostname "${CF_APP_NAME}"
     # View logs
     # cf logs "${CF_APP}" --recent
