@@ -26,7 +26,7 @@ hotels-ui-build:
   parameters:
     name: "hotels-ui"
     configuration:
-      content: $file(erp-api.pipeline.yml)
+      content: $file(hotels-ui.pipeline.yml)
       env:
         REPO: "hotels-ui-repo"
         REPO_BRANCH: "master"
