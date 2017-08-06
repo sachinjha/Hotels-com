@@ -16,7 +16,7 @@ erp-api-repo:
 hotels-ui-repo:
   service_id: githubpublic
   parameters:
-    repo_name: "hotels-ui3"
+    repo_name: "hotels-ui4"
     repo_url: "https://github.com/kalyani75/hotels-ui"
     type: clone
 has_issues: true
