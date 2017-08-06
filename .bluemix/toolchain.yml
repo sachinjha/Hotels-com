@@ -1,0 +1,49 @@
+---
+name: "Cloud-native Toolchain for the Acme Freight sample"
+description: "With this cloud-native toolchain, you use the acme freight template to create a supply chain management web app and back end that consists of multiple microservices: a Controller API, an ERP API, and a WEB-UI. The toolchain is preconfigured for continuous delivery, source control, blue-green deployment, unit testing, and issue tracking.\n\nTo get started, click **Create**."
+required:
+ - deploy
+
+# Github repos
+erp-api-repo:
+  service_id: githubpublic
+  parameters:
+    repo_name: "acme-freight-erp"
+    repo_url: "https://github.com/IBM/acme-freight-erp"
+    type: clone
+    has_issues: true
+
+erp-api-build:
+  service_id: pipeline
+  parameters:
+    name: "erp"
+    configuration:
+      content: $file(erp-api.pipeline.yml)
+      env:
+        REPO: "erp-api-repo"
+        REPO_BRANCH: "master"
+        CF_APP_NAME: "{{deploy.parameters.erp-app-name}}"
+        SPACE_NAME: "{{deploy.parameters.selected-space}}"
+        ORG_NAME: "{{deploy.parameters.selected-organization}}"
+        REGION_ID: "{{deploy.parameters.selected-region}}"
+      execute: true
+    services: ["erp-api-repo"]
+  hidden: [form, description]
+
+#Web IDE
+webide:
+  service_id: orion
+
+#Deployment
+deploy:
+  schema:
+    $ref: deploy.json
+  service-category: pipeline
+  parameters:
+    selected-region: "{{region}}"
+    selected-organization: "{{organization}}"
+    selected-space: "{{space}}"
+    erp-app-name: "{{name}}-erp"
+    controller-app-name: "{{name}}-controller"
+    webui-app-name: "{{name}}-webui"
+openwhisk_auth:
