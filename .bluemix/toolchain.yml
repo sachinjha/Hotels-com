@@ -5,14 +5,7 @@ required:
  - deploy
 
 # Github repos
-erp-api-repo:
-  service_id: githubpublic
-  parameters:
-    repo_name: "acme-freight-erp"
-    repo_url: "https://github.com/IBM/acme-freight-erp"
-    type: clone
-    has_issues: true
-    
+
 hotels-ui-repo:
   service_id: githubpublic
   parameters:
@@ -45,6 +38,7 @@ hotels-dealsQ-build:
       execute: true
     services: ["hotels-dealsQ-repo"]
 hidden: [form, description]
+
 hotels-ui-build:
   service_id: pipeline
   parameters:
@@ -61,23 +55,6 @@ hotels-ui-build:
       execute: true
     services: ["hotels-ui-repo"]
 hidden: [form, description]
-
-erp-api-build:
-  service_id: pipeline
-  parameters:
-    name: "erp"
-    configuration:
-      content: $file(erp-api.pipeline.yml)
-      env:
-        REPO: "erp-api-repo"
-        REPO_BRANCH: "master"
-        CF_APP_NAME: "{{deploy.parameters.erp-app-name}}"
-        SPACE_NAME: "{{deploy.parameters.selected-space}}"
-        ORG_NAME: "{{deploy.parameters.selected-organization}}"
-        REGION_ID: "{{deploy.parameters.selected-region}}"
-      execute: true
-    services: ["erp-api-repo"]
-  hidden: [form, description]
 
 #Web IDE
 webide:
