@@ -1,5 +1,5 @@
 ---
-name: "Cloud-native Toolchain for the Acme Freight sample"
+name: "Cloud-native Toolchain for the Hotels sample"
 description: "With this cloud-native toolchain, you use the acme freight template to create a supply chain management web app and back end that consists of multiple microservices: a Controller API, an ERP API, and a WEB-UI. The toolchain is preconfigured for continuous delivery, source control, blue-green deployment, unit testing, and issue tracking.\n\nTo get started, click **Create**."
 required:
  - deploy
@@ -30,7 +30,7 @@ hotels-ui-build:
       env:
         REPO: "hotels-ui-repo"
         REPO_BRANCH: "master"
-        CF_APP_NAME: "{{deploy.parameters.hotels-ui-app-name}}"
+        CF_APP_NAME: "{{deploy.parameters.ui-app-name}}"
         SPACE_NAME: "{{deploy.parameters.selected-space}}"
         ORG_NAME: "{{deploy.parameters.selected-organization}}"
         REGION_ID: "{{deploy.parameters.selected-region}}"
@@ -69,7 +69,6 @@ deploy:
     selected-organization: "{{organization}}"
     selected-space: "{{space}}"
     erp-app-name: "{{name}}-erp"
-    hotels-ui-app-name: "{{name}}-ui"
+    ui-app-name: "{{name}}-ui"
     controller-app-name: "{{name}}-controller"
     webui-app-name: "{{name}}-webui"
-openwhisk_auth:
