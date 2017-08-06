@@ -6,6 +6,14 @@ required:
 
 # Github repos
 
+hotels-controller-repo:
+  service_id: githubpublic
+  parameters:
+    repo_name: "hotels-controller"
+    repo_url: "https://github.com/kalyani75/hotels-controller"
+    type: clone
+    has_issues: true
+
 hotels-dealsQ-repo:
   service_id: githubpublic
   parameters:
@@ -53,6 +61,23 @@ hotels-dealsQ-build:
         REGION_ID: "{{deploy.parameters.selected-region}}"
       execute: true
     services: ["hotels-dealsQ-repo"]
+  hidden: [form, description]
+  
+hotels-controller-build:
+  service_id: pipeline
+  parameters:
+    name: "hotels-controller"
+    configuration:
+      content: $file(hotels-controller.pipeline.yml)
+      env:
+        REPO: "hotels-controller-repo"
+        REPO_BRANCH: "master"  
+        CF_APP_NAME: "{{deploy.parameters.controller-app-name}}"
+        SPACE_NAME: "{{deploy.parameters.selected-space}}"
+        ORG_NAME: "{{deploy.parameters.selected-organization}}"
+        REGION_ID: "{{deploy.parameters.selected-region}}"
+      execute: true
+    services: ["hotels-controller-repo"]
   hidden: [form, description]
 
 hotels-ui-build:
