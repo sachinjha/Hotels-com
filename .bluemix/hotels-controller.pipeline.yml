@@ -38,4 +38,12 @@ stages:
       application: ${CF_APP_NAME}
     script: |-
       #!/bin/bash
-      cf push "${CF_APP}" --hostname ${CF_APP_NAME}
+      domain=".mybluemix.net"
+      cf push "${CF_APP}" --hostname ${CF_APP_NAME} --no-start
+      cf set-env $CF_APP LOCATIONQUERYHOST  https://$LOCATION_APP_NAME$domain
+      cf set-env $CF_APP HOTELQUERYHOST  https://$HOTEL_APP_NAME$domain
+      cf set-env $CF_APP DEALQUERYHOST https://$DEAL_APP_NAME$domain
+      cf set-env $CF_APP LOCATIONQUERYPORT  443
+      cf set-env $CF_APP HOTELQUERYPORT 443
+      cf set-env $CF_APP DEALQUERYPORT 443
+      cf start $CF_APP
