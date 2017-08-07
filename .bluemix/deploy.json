@@ -111,13 +111,35 @@
     },
     {
       "type": "label",
-      "title": "The recommendation service relies on OpenWhisk actions. To deploy these actions, the pipeline requires your OpenWhisk authorization key. Make sure to enter the authorization key associated with the space where the applications will be deployed."
+      "title": "The HotelsEvent Handler service relies on OpenWhisk actions. To deploy these actions, the pipeline requires your OpenWhisk authorization key. Make sure to enter the authorization key associated with the space where the applications will be deployed."
     },
     {
       "type": "text",
       "readonly": false,
       "title": "OpenWhisk Authorization Key",
       "key": "openwhisk_auth"
+    },
+    {
+      "type": "label",
+      "title": "The Bootstrap openwhisk action requires API Key and Secret to make API calls to initialize events db with registered properties and locations. Make sure to enter API Key and Secret of the Registered consumer app."
+    },
+    {
+      "type": "text",
+      "readonly": false,
+      "title": "API Key",
+      "key": "api_key"
+    },
+    {
+      "type": "text",
+      "readonly": false,
+      "title": "API Secret",
+      "key": "api_secret"
+    },
+    {
+      "type": "text",
+      "readonly": false,
+      "title": "API Hostname",
+      "key": "api_host"
     }
   ]
 }
