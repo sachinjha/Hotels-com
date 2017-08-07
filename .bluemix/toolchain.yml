@@ -1,10 +1,30 @@
 ---
-name: "Cloud-native Toolchain for the Hotels Microservices sample"
-description: "Hotels Microservices Example"
+name: "Cloud-native Toolchain for the Hotels sample"
+description: "With this cloud-native toolchain, you use the acme freight template to create a supply chain management web app and back end that consists of multiple microservices: a Controller API, an ERP API, and a WEB-UI. The toolchain is preconfigured for continuous delivery, source control, blue-green deployment, unit testing, and issue tracking.\n\nTo get started, click **Create**."
 required:
  - deploy
 
 # Github repos
+
+<<<<<<< HEAD
+hotels-ui-repo:
+=======
+hotels-controller-repo:
+>>>>>>> 26cbb5d69e5db55200fd7dcba8bd64d15ec8737b
+  service_id: githubpublic
+  parameters:
+    repo_name: "hotels-controller"
+    repo_url: "https://github.com/kalyani75/hotels-controller"
+    type: clone
+    has_issues: true
+
+hotels-dealsQ-repo:
+  service_id: githubpublic
+  parameters:
+    repo_name: "hotels-dealsQ"
+    repo_url: "https://github.com/kalyani75/hotels-dealsQ"
+    type: clone
+    has_issues: true
 
 hotels-ui-repo:
   service_id: githubpublic
@@ -13,15 +33,7 @@ hotels-ui-repo:
     repo_url: "https://github.com/kalyani75/hotels-ui"
     type: clone
     has_issues: true
-
-hotels-controller-repo:
-  service_id: githubpublic
-  parameters:
-    repo_name: "hotels-controller"
-    repo_url: "https://github.com/kalyani75/hotels-controller"
-    type: clone
-    has_issues: true
-
+    
 hotels-locationQ-repo:
   service_id: githubpublic
   parameters:
@@ -36,8 +48,9 @@ hotels-hotelQ-repo:
     repo_name: "hotels-hotelQ"
     repo_url: "https://github.com/kalyani75/hotels-hotelQ"
     type: clone
-    has_issues: true
+has_issues: true
 
+<<<<<<< HEAD
 hotels-dealsQ-repo:
   service_id: githubpublic
   parameters:
@@ -60,21 +73,25 @@ hotels-event-create-repo:
     
     
 hotels-ui-build:
+=======
+hotels-dealsQ-build:
+>>>>>>> 26cbb5d69e5db55200fd7dcba8bd64d15ec8737b
   service_id: pipeline
   parameters:
-    name: "hotels-ui"
+    name: "hotels-dealsQ"
     configuration:
-      content: $file(hotels-ui.pipeline.yml)
+      content: $file(hotels-dealsQ.pipeline.yml)
       env:
-        REPO: "hotels-ui-repo"
-        REPO_BRANCH: "master"
-       # CF_APP_NAME: "{{deploy.parameters.hotels-ui-app-name}}"
+        REPO: "hotels-dealsQ-repo"
+        REPO_BRANCH: "master"   
+        CF_APP_NAME: "{{deploy.parameters.dealsQ-app-name}}"
         SPACE_NAME: "{{deploy.parameters.selected-space}}"
         ORG_NAME: "{{deploy.parameters.selected-organization}}"
         REGION_ID: "{{deploy.parameters.selected-region}}"
       execute: true
-    services: ["hotels-ui-repo"]
+    services: ["hotels-dealsQ-repo"]
   hidden: [form, description]
+<<<<<<< HEAD
 
 
 hotels-event-create-build:
@@ -89,13 +106,67 @@ hotels-event-create-build:
         OPENWHISK_AUTH: "{{deploy.parameters.openwhisk_auth}}"
         PACKAGE_NAME: "hotels-event"
         CLOUDANT_DATABASE: "eventsdb"
+=======
+  
+hotels-controller-build:
+  service_id: pipeline
+  parameters:
+    name: "hotels-controller"
+    configuration:
+      content: $file(hotels-controller.pipeline.yml)
+      env:
+        REPO: "hotels-controller-repo"
+        REPO_BRANCH: "master"  
+        CF_APP_NAME: "{{deploy.parameters.controller-app-name}}"
+>>>>>>> 26cbb5d69e5db55200fd7dcba8bd64d15ec8737b
         SPACE_NAME: "{{deploy.parameters.selected-space}}"
         ORG_NAME: "{{deploy.parameters.selected-organization}}"
         REGION_ID: "{{deploy.parameters.selected-region}}"
       execute: true
+<<<<<<< HEAD
     services: ["hotels-event-create-repo"]
   hidden: [form, description]
 
+
+hotels-locationQ-build:
+=======
+    services: ["hotels-controller-repo"]
+  hidden: [form, description]
+
+hotels-ui-build:
+>>>>>>> 26cbb5d69e5db55200fd7dcba8bd64d15ec8737b
+  service_id: pipeline
+  parameters:
+    name: "hotels-ui"
+    configuration:
+      content: $file(hotels-ui.pipeline.yml)
+      env:
+        REPO: "hotels-ui-repo"
+        REPO_BRANCH: "master"
+        CF_APP_NAME: "{{deploy.parameters.ui-app-name}}"
+        SPACE_NAME: "{{deploy.parameters.selected-space}}"
+        ORG_NAME: "{{deploy.parameters.selected-organization}}"
+        REGION_ID: "{{deploy.parameters.selected-region}}"
+      execute: true
+    services: ["hotels-ui-repo"]
+  hidden: [form, description]
+
+hotels-hotelQ-build:
+  service_id: pipeline
+  parameters:
+    name: "hotels-hotelQ"
+    configuration:
+      content: $file(hotels-hotelQ.pipeline.yml)
+      env:
+        REPO: "hotels-hotelQ-repo"
+        REPO_BRANCH: "master"
+        CF_APP_NAME: "{{deploy.parameters.hotelQ-app-name}}"
+        SPACE_NAME: "{{deploy.parameters.selected-space}}"
+        ORG_NAME: "{{deploy.parameters.selected-organization}}"
+        REGION_ID: "{{deploy.parameters.selected-region}}"
+      execute: true
+    services: ["hotels-hotelQ-repo"]
+  hidden: [form, description]
 
 hotels-locationQ-build:
   service_id: pipeline
@@ -106,46 +177,12 @@ hotels-locationQ-build:
       env:
         REPO: "hotels-locationQ-repo"
         REPO_BRANCH: "master"
-      #  CF_APP_NAME: "{{deploy.parameters.hotels-locationQ-app-name}}"
+        CF_APP_NAME: "{{deploy.parameters.locationQ-app-name}}"
         SPACE_NAME: "{{deploy.parameters.selected-space}}"
         ORG_NAME: "{{deploy.parameters.selected-organization}}"
         REGION_ID: "{{deploy.parameters.selected-region}}"
       execute: true
     services: ["hotels-locationQ-repo"]
-  hidden: [form, description]
-
-hotels-dealsQ-build:
-  service_id: pipeline
-  parameters:
-    name: "hotels-dealsQ"
-    configuration:
-      content: $file(hotels-dealsQ.pipeline.yml)
-      env:
-        REPO: "hotels-dealsQ-repo"
-        REPO_BRANCH: "master"   
-      #  CF_APP_NAME: "{{deploy.parameters.hotels-dealsQ-app-name}}"
-        SPACE_NAME: "{{deploy.parameters.selected-space}}"
-        ORG_NAME: "{{deploy.parameters.selected-organization}}"
-        REGION_ID: "{{deploy.parameters.selected-region}}"
-      execute: true
-    services: ["hotels-dealsQ-repo"]
-  hidden: [form, description]
-
-hotels-controller-build:
-  service_id: pipeline
-  parameters:
-    name: "hotels-controller"
-    configuration:
-      content: $file(hotels-controller.pipeline.yml)
-      env:
-        REPO: "hotels-controller-repo"
-        REPO_BRANCH: "master"  
-    #    CF_APP_NAME: "{{deploy.parameters.hotels-controller-app-name}}"
-        SPACE_NAME: "{{deploy.parameters.selected-space}}"
-        ORG_NAME: "{{deploy.parameters.selected-organization}}"
-        REGION_ID: "{{deploy.parameters.selected-region}}"
-      execute: true
-    services: ["hotels-controller-repo"]
 hidden: [form, description]
 
 
@@ -162,9 +199,19 @@ deploy:
     selected-region: "{{region}}"
     selected-organization: "{{organization}}"
     selected-space: "{{space}}"
+<<<<<<< HEAD
     hotels-ui-app-name: "{{name}}-ui"
     hotels-dealsQ-app-name: "{{name}}-dealsQ"
     hotels-hotelQ-app-name: "{{name}}-hotelsQ"
     hotels-locationQ-app-name: "{{name}}-locationQ"
     hotels-controller-app-name: "{{name}}-controller"
     openwhisk_auth:
+=======
+    erp-app-name: "{{name}}-erp"
+    ui-app-name: "{{name}}-ui"
+    dealsQ-app-name: "{{name}}-dealsQ"
+    locationQ-app-name: "{{name}}-locationQ"
+    hotelQ-app-name: "{{name}}-hotelQ"
+    controller-app-name: "{{name}}-controller"
+    webui-app-name: "{{name}}-webui"
+>>>>>>> 26cbb5d69e5db55200fd7dcba8bd64d15ec8737b
