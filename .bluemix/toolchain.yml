@@ -18,7 +18,7 @@ hotels-dealsQ-repo:
   service_id: githubpublic
   parameters:
     repo_name: "hotels-dealsQ"
-    repo_url: "https://github.com/kalyani75/hotels-dealsQ"
+    repo_url: "https://github.com/kalyani75/hotels-dealsQuery"
     type: clone
     has_issues: true
 
@@ -34,7 +34,7 @@ hotels-locationQ-repo:
   service_id: githubpublic
   parameters:
     repo_name: "hotels-locationQ"
-    repo_url: "https://github.com/kalyani75/hotels-locationQ"
+    repo_url: "https://github.com/kalyani75/hotels-locationQuery"
     type: fork
     has_issues: true
 
@@ -42,7 +42,7 @@ hotels-hotelQ-repo:
   service_id: githubpublic
   parameters:
     repo_name: "hotels-hotelQ"
-    repo_url: "https://github.com/kalyani75/hotels-hotelQ"
+    repo_url: "https://github.com/kalyani75/hotels-hotelQuery"
     type: fork
     has_issues: true
 
