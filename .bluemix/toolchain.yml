@@ -11,7 +11,7 @@ hotels-controller-repo:
   parameters:
     repo_name: "hotels-controller"
     repo_url: "https://github.com/kalyani75/hotels-controller"
-    type: clone
+    type: fork
     has_issues: true
 
 hotels-dealsQ-repo:
@@ -27,7 +27,7 @@ hotels-ui-repo:
   parameters:
     repo_name: "hotels-ui"
     repo_url: "https://github.com/kalyani75/hotels-ui"
-    type: clone
+    type: fork
     has_issues: true
     
 hotels-locationQ-repo:
@@ -35,7 +35,7 @@ hotels-locationQ-repo:
   parameters:
     repo_name: "hotels-locationQ"
     repo_url: "https://github.com/kalyani75/hotels-locationQ"
-    type: clone
+    type: fork
     has_issues: true
 
 hotels-hotelQ-repo:
@@ -43,7 +43,7 @@ hotels-hotelQ-repo:
   parameters:
     repo_name: "hotels-hotelQ"
     repo_url: "https://github.com/kalyani75/hotels-hotelQ"
-    type: clone
+    type: fork
     has_issues: true
 
 hotels-event-create-repo:
@@ -51,7 +51,7 @@ hotels-event-create-repo:
   parameters:
     repo_name: "hotels-event-create"
     repo_url: "https://github.com/kalyani75/hotels-event-create"
-    type: Existing
+    type: fork
     has_issues: true
 
 
