@@ -6,11 +6,7 @@ required:
 
 # Github repos
 
-<<<<<<< HEAD
-hotels-ui-repo:
-=======
 hotels-controller-repo:
->>>>>>> 26cbb5d69e5db55200fd7dcba8bd64d15ec8737b
   service_id: githubpublic
   parameters:
     repo_name: "hotels-controller"
@@ -48,34 +44,18 @@ hotels-hotelQ-repo:
     repo_name: "hotels-hotelQ"
     repo_url: "https://github.com/kalyani75/hotels-hotelQ"
     type: clone
-has_issues: true
-
-<<<<<<< HEAD
-hotels-dealsQ-repo:
-  service_id: githubpublic
-  parameters:
-    repo_name: "hotels-dealsQ"
-    repo_url: "https://github.com/kalyani75/hotels-dealsQ"
-    type: clone
     has_issues: true
 
 hotels-event-create-repo:
   service_id: githubpublic
   parameters:
     repo_name: "hotels-event-create"
-    repo_url: "https://github.com/sachinjha/hotels-event-create"
+    repo_url: "https://github.com/kalyani75/hotels-event-create"
     type: Existing
     has_issues: true
-    
-    
 
-    
-    
-    
-hotels-ui-build:
-=======
+
 hotels-dealsQ-build:
->>>>>>> 26cbb5d69e5db55200fd7dcba8bd64d15ec8737b
   service_id: pipeline
   parameters:
     name: "hotels-dealsQ"
@@ -91,22 +71,6 @@ hotels-dealsQ-build:
       execute: true
     services: ["hotels-dealsQ-repo"]
   hidden: [form, description]
-<<<<<<< HEAD
-
-
-hotels-event-create-build:
-  service_id: pipeline
-  parameters:
-    name: "hotels-event-create"
-    configuration:
-      content: $file(hotels-event.pipeline.yml)
-      env:
-        REPO: "hotels-event-create-repo"
-        REPO_BRANCH: "master"
-        OPENWHISK_AUTH: "{{deploy.parameters.openwhisk_auth}}"
-        PACKAGE_NAME: "hotels-event"
-        CLOUDANT_DATABASE: "eventsdb"
-=======
   
 hotels-controller-build:
   service_id: pipeline
@@ -118,23 +82,14 @@ hotels-controller-build:
         REPO: "hotels-controller-repo"
         REPO_BRANCH: "master"  
         CF_APP_NAME: "{{deploy.parameters.controller-app-name}}"
->>>>>>> 26cbb5d69e5db55200fd7dcba8bd64d15ec8737b
         SPACE_NAME: "{{deploy.parameters.selected-space}}"
         ORG_NAME: "{{deploy.parameters.selected-organization}}"
         REGION_ID: "{{deploy.parameters.selected-region}}"
       execute: true
-<<<<<<< HEAD
-    services: ["hotels-event-create-repo"]
-  hidden: [form, description]
-
-
-hotels-locationQ-build:
-=======
     services: ["hotels-controller-repo"]
   hidden: [form, description]
 
 hotels-ui-build:
->>>>>>> 26cbb5d69e5db55200fd7dcba8bd64d15ec8737b
   service_id: pipeline
   parameters:
     name: "hotels-ui"
@@ -185,6 +140,24 @@ hotels-locationQ-build:
     services: ["hotels-locationQ-repo"]
 hidden: [form, description]
 
+hotels-event-create-build:
+  service_id: pipeline
+  parameters:
+    name: "hotels-event-create"
+    configuration:
+      content: $file(hotels-event.pipeline.yml)
+      env:
+        REPO: "hotels-event-create-repo"
+        REPO_BRANCH: "master"
+        OPENWHISK_AUTH: "{{deploy.parameters.openwhisk_auth}}"
+        PACKAGE_NAME: "hotels-event"
+        CLOUDANT_DATABASE: "eventsdb"
+        SPACE_NAME: "{{deploy.parameters.selected-space}}"
+        ORG_NAME: "{{deploy.parameters.selected-organization}}"
+        REGION_ID: "{{deploy.parameters.selected-region}}"
+      execute: true
+    services: ["hotels-event-create-repo"]
+hidden: [form, description]
 
 #Web IDE
 webide:
@@ -199,14 +172,6 @@ deploy:
     selected-region: "{{region}}"
     selected-organization: "{{organization}}"
     selected-space: "{{space}}"
-<<<<<<< HEAD
-    hotels-ui-app-name: "{{name}}-ui"
-    hotels-dealsQ-app-name: "{{name}}-dealsQ"
-    hotels-hotelQ-app-name: "{{name}}-hotelsQ"
-    hotels-locationQ-app-name: "{{name}}-locationQ"
-    hotels-controller-app-name: "{{name}}-controller"
-    openwhisk_auth:
-=======
     erp-app-name: "{{name}}-erp"
     ui-app-name: "{{name}}-ui"
     dealsQ-app-name: "{{name}}-dealsQ"
@@ -214,4 +179,4 @@ deploy:
     hotelQ-app-name: "{{name}}-hotelQ"
     controller-app-name: "{{name}}-controller"
     webui-app-name: "{{name}}-webui"
->>>>>>> 26cbb5d69e5db55200fd7dcba8bd64d15ec8737b
+    openwhisk_auth: 
