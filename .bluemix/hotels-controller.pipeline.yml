@@ -22,6 +22,12 @@ stages:
     value: ${REPO_BRANCH}
   - name: CF_APP_NAME
     value: ${CF_APP_NAME}
+  - name: LOCATION_APP_NAME
+    value: ${LOCATION_APP_NAME}
+  - name: HOTEL_APP_NAME
+    value: ${CHOTEL_APP_NAME}
+  - name: DEAL_APP_NAME
+    value: ${DEAL_APP_NAME}   
   jobs:
   - name: Blue/Green Deploy
     type: deployer
