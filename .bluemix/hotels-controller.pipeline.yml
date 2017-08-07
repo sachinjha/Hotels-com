@@ -25,7 +25,7 @@ stages:
   - name: LOCATION_APP_NAME
     value: ${LOCATION_APP_NAME}
   - name: HOTEL_APP_NAME
-    value: ${CHOTEL_APP_NAME}
+    value: ${HOTEL_APP_NAME}
   - name: DEAL_APP_NAME
     value: ${DEAL_APP_NAME}   
   jobs:
