@@ -21,19 +21,19 @@
       "description": "Name of the UI",
       "type": "string"
     },
-   "hotels-dealsQ-app-name": {
+   "dealsQ-app-name": {
       "description": "Name of the deals Query app",
       "type": "string"
     },
-    "hotels-hotelQ-app-name": {
+    "hotelQ-app-name": {
       "description": "Name of the hotels Query App",
       "type": "string"
     },
-    "hotels-locationQ-app-name": {
+    "locationQ-app-name": {
       "description": "Name of the hotels Query App",
       "type": "string"
     },
-    "hotels-controller-app-name": {
+    "controller-app-name": {
       "description": "Name of the hotels Query App",
       "type": "string"
     },
@@ -41,7 +41,7 @@
       "type": "string"
     }
   },
-  "required": ["selected-region", "selected-organization", "selected-space", "ui-app-name", "hotels-dealsQ-app-name", "hotels-hotelQ-app-name","hotels-locationQ-app-name","hotels-controller-app-name"],
+  "required": ["selected-region", "selected-organization", "selected-space", "ui-app-name", "dealsQ-app-name", "hotelQ-app-name","locationQ-app-name","controller-app-name"],
   "form": [
    {
       "type": "validator",
@@ -57,25 +57,25 @@
       "type": "text",
       "readonly": false,
       "title": "Hotels Query App Name",
-      "key": "hotels-hotelQ-app-name"
+      "key": "hotelQ-app-name"
     },
     {
       "type": "text",
       "readonly": false,
       "title": " Deals Query App Name",
-      "key": "hotels-dealsQ-app-name"
+      "key": "dealsQ-app-name"
     },
     {
       "type": "text",
       "readonly": false,
       "title": "Hotels Location App Name",
-      "key": "hotels-locationQ-app-name"
+      "key": "locationQ-app-name"
     },
   {
       "type": "text",
       "readonly": false,
       "title": "Hotels Controller App Name",
-      "key": "hotels-controller-app-name"
+      "key": "controller-app-name"
     },
     {
       "type": "table",
