@@ -17,9 +17,9 @@ hotels-controller-repo:
 hotels-dealsQ-repo:
   service_id: githubpublic
   parameters:
-    repo_name: "hotels-dealsQ"
+    repo_name: "hotels-dealsQuery"
     repo_url: "https://github.com/kalyani75/hotels-dealsQuery"
-    type: clone
+    type: fork
     has_issues: true
 
 hotels-ui-repo:
@@ -33,7 +33,7 @@ hotels-ui-repo:
 hotels-locationQ-repo:
   service_id: githubpublic
   parameters:
-    repo_name: "hotels-locationQ"
+    repo_name: "hotels-locationQuery"
     repo_url: "https://github.com/kalyani75/hotels-locationQuery"
     type: fork
     has_issues: true
@@ -41,7 +41,7 @@ hotels-locationQ-repo:
 hotels-hotelQ-repo:
   service_id: githubpublic
   parameters:
-    repo_name: "hotels-hotelQ"
+    repo_name: "hotels-hotelQuery"
     repo_url: "https://github.com/kalyani75/hotels-hotelQuery"
     type: fork
     has_issues: true
@@ -58,7 +58,7 @@ hotels-event-create-repo:
 hotels-dealsQ-build:
   service_id: pipeline
   parameters:
-    name: "hotels-dealsQ"
+    name: "hotels-dealsQuery"
     configuration:
       content: $file(hotels-dealsQ.pipeline.yml)
       env:
@@ -109,7 +109,7 @@ hotels-ui-build:
 hotels-hotelQ-build:
   service_id: pipeline
   parameters:
-    name: "hotels-hotelQ"
+    name: "hotels-hotelQuery"
     configuration:
       content: $file(hotels-hotelQ.pipeline.yml)
       env:
@@ -126,7 +126,7 @@ hotels-hotelQ-build:
 hotels-locationQ-build:
   service_id: pipeline
   parameters:
-    name: "hotels-locationQ"
+    name: "hotels-locationQuery"
     configuration:
       content: $file(hotels-locationQ.pipeline.yml)
       env:
@@ -174,9 +174,9 @@ deploy:
     selected-space: "{{space}}"
     erp-app-name: "{{name}}-erp"
     ui-app-name: "{{name}}-ui"
-    dealsQ-app-name: "{{name}}-dealsQ"
-    locationQ-app-name: "{{name}}-locationQ"
-    hotelQ-app-name: "{{name}}-hotelQ"
+    dealsQ-app-name: "{{name}}-dealsQuery"
+    locationQ-app-name: "{{name}}-locationQuery"
+    hotelQ-app-name: "{{name}}-hotelQuery"
     controller-app-name: "{{name}}-controller"
     webui-app-name: "{{name}}-webui"
     openwhisk_auth: 
