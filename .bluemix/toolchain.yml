@@ -44,7 +44,16 @@ hotels-hotelQ-repo:
     repo_name: "hotels-hotelQ"
     repo_url: "https://github.com/kalyani75/hotels-hotelQ"
     type: clone
-has_issues: true
+    has_issues: true
+
+hotels-event-create-repo:
+  service_id: githubpublic
+  parameters:
+    repo_name: "hotels-event-create"
+    repo_url: "https://github.com/kalyani75/hotels-event-create"
+    type: Existing
+    has_issues: true
+
 
 hotels-dealsQ-build:
   service_id: pipeline
@@ -131,6 +140,25 @@ hotels-locationQ-build:
     services: ["hotels-locationQ-repo"]
 hidden: [form, description]
 
+hotels-event-create-build:
+  service_id: pipeline
+  parameters:
+    name: "hotels-event-create"
+    configuration:
+      content: $file(hotels-event.pipeline.yml)
+      env:
+        REPO: "hotels-event-create-repo"
+        REPO_BRANCH: "master"
+        OPENWHISK_AUTH: "{{deploy.parameters.openwhisk_auth}}"
+        PACKAGE_NAME: "hotels-event"
+        CLOUDANT_DATABASE: "eventsdb"
+        SPACE_NAME: "{{deploy.parameters.selected-space}}"
+        ORG_NAME: "{{deploy.parameters.selected-organization}}"
+        REGION_ID: "{{deploy.parameters.selected-region}}"
+      execute: true
+    services: ["hotels-event-create-repo"]
+hidden: [form, description]
+
 #Web IDE
 webide:
   service_id: orion
@@ -151,3 +179,4 @@ deploy:
     hotelQ-app-name: "{{name}}-hotelQ"
     controller-app-name: "{{name}}-controller"
     webui-app-name: "{{name}}-webui"
+    openwhisk_auth: 
