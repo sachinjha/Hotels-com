@@ -138,7 +138,7 @@ hotels-locationQ-build:
         REGION_ID: "{{deploy.parameters.selected-region}}"
       execute: true
     services: ["hotels-locationQ-repo"]
-hidden: [form, description]
+  hidden: [form, description]
 
 hotels-event-create-build:
   service_id: pipeline
