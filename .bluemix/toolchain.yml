@@ -6,52 +6,14 @@ required:
 
 # Github repos
 
-hotels-controller-repo:
-  service_id: githubpublic
-  parameters:
-    repo_name: "hotels-controller"
-    repo_url: "https://github.com/kalyani75/hotels-controller"
-    type: fork
-    has_issues: true
 
-hotels-dealsQ-repo:
-  service_id: githubpublic
-  parameters:
-    repo_name: "hotels-dealsQuery"
-    repo_url: "https://github.com/kalyani75/hotels-dealsQuery"
-    type: fork
-    has_issues: true
-
-hotels-ui-repo:
-  service_id: githubpublic
-  parameters:
-    repo_name: "hotels-ui"
-    repo_url: "https://github.com/kalyani75/hotels-ui"
-    type: fork
-    has_issues: true
-    
-hotels-locationQ-repo:
-  service_id: githubpublic
-  parameters:
-    repo_name: "hotels-locationQuery"
-    repo_url: "https://github.com/kalyani75/hotels-locationQuery"
-    type: fork
-    has_issues: true
-
-hotels-hotelQ-repo:
-  service_id: githubpublic
-  parameters:
-    repo_name: "hotels-hotelQuery"
-    repo_url: "https://github.com/kalyani75/hotels-hotelQuery"
-    type: fork
-    has_issues: true
 
 hotels-event-create-repo:
   service_id: githubpublic
   parameters:
     repo_name: "hotels-event-create"
     repo_url: "https://github.com/sachinjha/hotels-event-create"
-    type: fork
+    type: existing
     has_issues: true
 
 hotels-onboarding-ui-repo:
@@ -59,113 +21,10 @@ hotels-onboarding-ui-repo:
   parameters:
     repo_name: "hotels-onboarding-ui-repo"
     repo_url: "https://github.com/sachinjha/hotels-onboarding-ui"
-    type: fork
+    type: existing
     has_issues: true
 
 
-
-hotels-onboarding-ui-build:
-  service_id: pipeline
-  parameters:
-    name: "hotels-onboarding-ui"
-    configuration:
-      content: $file(hotels-onboarding-ui.pipeline.yml)
-      env:
-        REPO: "hotels-onboarding-ui-repo"
-        REPO_BRANCH: "master"   
-        CF_APP_NAME: "{{deploy.parameters.onboarding-ui-app-name}}"
-        SPACE_NAME: "{{deploy.parameters.selected-space}}"
-        ORG_NAME: "{{deploy.parameters.selected-organization}}"
-        REGION_ID: "{{deploy.parameters.selected-region}}"
-      execute: true
-    services: ["hotels-onboarding-ui-repo"]
-  hidden: [form, description]
-  
-
-hotels-dealsQ-build:
-  service_id: pipeline
-  parameters:
-    name: "hotels-dealsQuery"
-    configuration:
-      content: $file(hotels-dealsQ.pipeline.yml)
-      env:
-        REPO: "hotels-dealsQ-repo"
-        REPO_BRANCH: "master"   
-        CF_APP_NAME: "{{deploy.parameters.dealsQ-app-name}}"
-        SPACE_NAME: "{{deploy.parameters.selected-space}}"
-        ORG_NAME: "{{deploy.parameters.selected-organization}}"
-        REGION_ID: "{{deploy.parameters.selected-region}}"
-      execute: true
-    services: ["hotels-dealsQ-repo"]
-  hidden: [form, description]
-  
-hotels-controller-build:
-  service_id: pipeline
-  parameters:
-    name: "hotels-controller"
-    configuration:
-      content: $file(hotels-controller.pipeline.yml)
-      env:
-        REPO: "hotels-controller-repo"
-        REPO_BRANCH: "master"  
-        CF_APP_NAME: "{{deploy.parameters.controller-app-name}}"
-        SPACE_NAME: "{{deploy.parameters.selected-space}}"
-        ORG_NAME: "{{deploy.parameters.selected-organization}}"
-        REGION_ID: "{{deploy.parameters.selected-region}}"
-      execute: true
-    services: ["hotels-controller-repo"]
-  hidden: [form, description]
-
-hotels-ui-build:
-  service_id: pipeline
-  parameters:
-    name: "hotels-ui"
-    configuration:
-      content: $file(hotels-ui.pipeline.yml)
-      env:
-        REPO: "hotels-ui-repo"
-        REPO_BRANCH: "master"
-        CF_APP_NAME: "{{deploy.parameters.ui-app-name}}"
-        SPACE_NAME: "{{deploy.parameters.selected-space}}"
-        ORG_NAME: "{{deploy.parameters.selected-organization}}"
-        REGION_ID: "{{deploy.parameters.selected-region}}"
-      execute: true
-    services: ["hotels-ui-repo"]
-  hidden: [form, description]
-
-hotels-hotelQ-build:
-  service_id: pipeline
-  parameters:
-    name: "hotels-hotelQuery"
-    configuration:
-      content: $file(hotels-hotelQ.pipeline.yml)
-      env:
-        REPO: "hotels-hotelQ-repo"
-        REPO_BRANCH: "master"
-        CF_APP_NAME: "{{deploy.parameters.hotelQ-app-name}}"
-        SPACE_NAME: "{{deploy.parameters.selected-space}}"
-        ORG_NAME: "{{deploy.parameters.selected-organization}}"
-        REGION_ID: "{{deploy.parameters.selected-region}}"
-      execute: true
-    services: ["hotels-hotelQ-repo"]
-  hidden: [form, description]
-
-hotels-locationQ-build:
-  service_id: pipeline
-  parameters:
-    name: "hotels-locationQuery"
-    configuration:
-      content: $file(hotels-locationQ.pipeline.yml)
-      env:
-        REPO: "hotels-locationQ-repo"
-        REPO_BRANCH: "master"
-        CF_APP_NAME: "{{deploy.parameters.locationQ-app-name}}"
-        SPACE_NAME: "{{deploy.parameters.selected-space}}"
-        ORG_NAME: "{{deploy.parameters.selected-organization}}"
-        REGION_ID: "{{deploy.parameters.selected-region}}"
-      execute: true
-    services: ["hotels-locationQ-repo"]
-  hidden: [form, description]
 
 hotels-event-create-build:
   service_id: pipeline
