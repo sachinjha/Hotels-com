@@ -41,7 +41,7 @@
       "type": "string"
     }
   },
-  "required": ["selected-region", "selected-organization", "selected-space", "ui-app-name", "dealsQ-app-name", "hotelQ-app-name","locationQ-app-name","controller-app-name"],
+  "required": ["selected-region", "selected-organization", "selected-space", "ui-app-name", "dealsQ-app-name", "hotelQ-app-name","locationQ-app-name","controller-app-name","messaging-app-name"],
   "form": [
    {
       "type": "validator",
@@ -70,6 +70,12 @@
       "readonly": false,
       "title": "Hotels Location App Name",
       "key": "locationQ-app-name"
+    },
+    {
+      "type": "text",
+      "readonly": false,
+      "title": "Messaging App Name",
+      "key": "messaging-app-name"
     },
   {
       "type": "text",
