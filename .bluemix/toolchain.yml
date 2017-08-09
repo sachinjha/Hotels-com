@@ -54,6 +54,13 @@ hotels-event-create-repo:
     type: fork
     has_issues: true
 
+hotels-messaging-repo:
+  service_id: githubpublic
+  parameters:
+    repo_name: "hotels-messaging"
+    repo_url: "https://github.com/kalyani75/hotels-messaging"
+    type: fork
+    has_issues: true
 
 hotels-dealsQ-build:
   service_id: pipeline
@@ -160,6 +167,23 @@ hotels-event-create-build:
         REGION_ID: "{{deploy.parameters.selected-region}}"
       execute: true
     services: ["hotels-event-create-repo"]
+  hidden: [form, description]
+
+hotels-messaging-build:
+  service_id: pipeline
+  parameters:
+    name: "hotels-messaging"
+    configuration:
+      content: $file(hotels-messaging.pipeline.yml)
+      env:
+        REPO: "hotels-messaging-repo"
+        REPO_BRANCH: "master"
+        CF_APP_NAME: "{{deploy.parameters.messaging-app-name}}"
+        SPACE_NAME: "{{deploy.parameters.selected-space}}"
+        ORG_NAME: "{{deploy.parameters.selected-organization}}"
+        REGION_ID: "{{deploy.parameters.selected-region}}"
+      execute: true
+    services: ["hotels-messaging-repo"]
 hidden: [form, description]
 
 #Web IDE
@@ -178,6 +202,7 @@ deploy:
     erp-app-name: "{{name}}-erp"
     ui-app-name: "{{name}}-ui"
     dealsQ-app-name: "{{name}}-dealsQuery"
+    messaging-app-name: "{{name}}-messaging"
     locationQ-app-name: "{{name}}-locationQuery"
     hotelQ-app-name: "{{name}}-hotelQuery"
     controller-app-name: "{{name}}-controller"
