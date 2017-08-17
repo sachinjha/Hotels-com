@@ -203,7 +203,7 @@ hotels-messaging-build:
         REGION_ID: "{{deploy.parameters.selected-region}}"
       execute: true
     services: ["hotels-messaging-repo"]
-hidden: [form, description]
+  hidden: [form, description]
 
 onboarding-events-repo-build:
   service_id: pipeline
@@ -223,7 +223,7 @@ onboarding-events-repo-build:
         CF_APP_NAME: "{{deploy.parameters.api-app-name}}"
       execute: true
     services: ["event-api-repo"]
-hidden: [form, description]
+  hidden: [form, description]
 
 hotels-onboarding-ui-build:
   service_id: pipeline
@@ -243,7 +243,7 @@ hotels-onboarding-ui-build:
         API_HOST: "{{deploy.parameters.api_host}}"
       execute: true
     services: ["hotels-onboarding-ui-repo"]
-hidden: [form, description]
+  hidden: [form, description]
 
 #Web IDE
 webide:
