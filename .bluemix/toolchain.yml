@@ -238,6 +238,9 @@ hotels-onboarding-ui-build:
         SPACE_NAME: "{{deploy.parameters.selected-space}}"
         ORG_NAME: "{{deploy.parameters.selected-organization}}"
         REGION_ID: "{{deploy.parameters.selected-region}}"
+        API_KEY: "{{deploy.parameters.api_key}}"
+        API_SECRET: "{{deploy.parameters.api_secret}}"
+        API_HOST: "{{deploy.parameters.api_host}}"
       execute: true
     services: ["hotels-onboarding-ui-repo"]
 hidden: [form, description]
