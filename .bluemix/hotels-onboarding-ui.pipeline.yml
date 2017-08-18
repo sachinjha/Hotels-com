@@ -22,6 +22,12 @@ stages:
     value: ${REPO_BRANCH}
   - name: CF_APP_NAME
     value: ${CF_APP_NAME}
+  - name: API_HOST
+    value: ${API_HOST}
+  - name: API_SECRET
+    value: ${API_SECRET}
+  - name: API_KEY
+    value: ${API_KEY}
   jobs:
   - name: Blue/Green Deploy
     type: deployer

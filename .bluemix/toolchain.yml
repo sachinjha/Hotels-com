@@ -228,7 +228,7 @@ onboarding-events-repo-build:
 hotels-onboarding-ui-build:
   service_id: pipeline
   parameters:
-    name: "hotels-ui"
+    name: "hotels-onboarding-ui"
     configuration:
       content: $file(hotels-onboarding-ui.pipeline.yml)
       env:
