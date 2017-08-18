@@ -96,6 +96,24 @@
       "key": "controller-app-name"
     },
     {
+      "type": "text",
+      "readonly": false,
+      "title": "APIC Username",
+      "key": "apic-username"
+    },
+    {
+      "type": "text",
+      "readonly": false,
+      "title": "APIC Password",
+      "key": "apic-password"
+    },
+    {
+      "type": "text",
+      "readonly": false,
+      "title": "API APP Name",
+      "key": "api-app-name"
+    },
+    {
       "type": "table",
       "columnCount": 3,
       "widths": ["20%", "20%", "20%"],

@@ -74,7 +74,7 @@ event-api-repo:
   service_id: githubpublic
   parameters:
     repo_name: "event-api"
-    repo_url: "https://github.com/kalyani75/hotels-events-api"
+    repo_url: "https://github.com/kalyani75/hotels-event-api"
     type: fork
     has_issues: true
 
